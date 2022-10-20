@@ -5,7 +5,7 @@ export function bubbleSort(arr: number[]) {
         continue;
       }
 
-      if (arr[j + 1] > arr[j]) {
+      if (arr[j + 1] < arr[j]) {
         const temp = arr[j + 1];
         arr[j + 1] = arr[j];
         arr[j] = temp;
