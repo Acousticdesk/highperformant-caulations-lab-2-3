@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
   const sortedArray = bubbleSort(array);
 
   res.status(200);
-  res.json({ length: sortedArray.length + 1, body: sortedArray });
+  res.json({ length: sortedArray.length, body: sortedArray });
 });
 
 export default router;
