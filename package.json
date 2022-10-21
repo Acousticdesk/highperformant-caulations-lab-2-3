@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start-dev": "export DEBUG=\"*,-not_this\"; npm run start",
-    "start": "nodemon ./bin/www",
+    "start-dev": "export DEBUG=\"*,-not_this\"; nodemon ./bin/www",
+    "start": "node ./bin/www",
     "build": "npx tsc"
   },
   "dependencies": {
