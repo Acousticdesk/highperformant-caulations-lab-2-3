@@ -2,6 +2,7 @@ import * as createError from "http-errors";
 import * as express from "express";
 import { ErrorRequestHandler } from "express";
 import * as logger from "morgan";
+import * as cors from "cors";
 
 import indexRouter from "./routes";
 import HttpError from "./errors";
@@ -12,6 +13,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // routes
 app.use("/", indexRouter);
