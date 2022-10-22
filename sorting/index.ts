@@ -1,7 +1,3 @@
-import createDebug from "debug";
-
-const debug = createDebug("lab-2-3:server");
-
 export function bubbleSort(arr: number[], sortingOrder: "asc" | "desc") {
   for (let i = 0; i < arr.length; i += 1) {
     for (let j = 0; j < arr.length; j += 1) {
