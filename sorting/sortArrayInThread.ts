@@ -6,10 +6,13 @@ import {
 } from "node:worker_threads";
 import { bubbleSort } from "../sorting";
 
-export default function sortArrayInThread(array: number[]): Promise<number[]> {
+export default function sortArrayInThread(
+  array: number[],
+  sortingOrder: "asc" | "desc"
+): Promise<number[]> {
   return new Promise((resolve, reject) => {
     const worker = new Worker(__filename, {
-      workerData: array,
+      workerData: { array, sortingOrder },
     });
     worker.on("message", resolve);
     worker.on("error", reject);
@@ -21,5 +24,7 @@ export default function sortArrayInThread(array: number[]): Promise<number[]> {
 }
 
 if (!isMainThread) {
-  parentPort?.postMessage(bubbleSort(workerData));
+  parentPort?.postMessage(
+    bubbleSort(workerData.array, workerData.sortingOrder)
+  );
 }
