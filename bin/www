@@ -6,7 +6,7 @@
 
 var { default: app } = require('../build/app');
 var debug = require('debug')('lab-2-3:server');
-var https = require('https');
+var http = require('http');
 var fs = require('fs');
 
 /**
@@ -20,11 +20,7 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = https.createServer({
-  key: fs.readFileSync('./ssl/private.key'),
-  cert: fs.readFileSync('./ssl/certificate.crt'),
-  ca: fs.readFileSync ('./ssl/ca_bundle.crt')
-}, app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
